@@ -15,7 +15,7 @@ function About() {
           </p>
         </Col>
         <Col md={6}>
-          <img src={aboutImg} alt="About us" className="img-fluid rounded" />
+          {/* <img src={} alt="About us" className="img-fluid rounded" /> */}
         </Col>
       </Row>
     </Container>
