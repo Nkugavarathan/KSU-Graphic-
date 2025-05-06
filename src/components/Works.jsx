@@ -1,30 +1,32 @@
-import { Card, Container, Row, Col } from "react-bootstrap"
+import { Card, Col, Row } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
+import "./Works.css" // for hover effect
 
-function Works() {
-  const works = [
-    { title: "Card 1", img: "/img1.jpg" },
-    { title: "Card 2", img: "/img2.jpg" },
-    { title: "Card 3", img: "/img3.jpg" },
-    { title: "Card 4", img: "/img4.jpg" },
-  ]
+const works = [
+  { id: "bookcover", title: "Book Cover", img: "/images/bookcover.jpg" },
+  { id: "flyer", title: "Flyer Design", img: "/images/flyer.jpg" },
+  // add more...
+]
+
+export default function Works() {
+  const navigate = useNavigate()
 
   return (
-    <Container className="my-5">
-      <h2>Our Works</h2>
-      <Row>
-        {works.map((work, index) => (
-          <Col key={index} sm={6} md={3} className="mb-4">
-            <Card>
+    <Row className="p-4">
+      {works.map((work) => (
+        <Col md={4} key={work.id}>
+          <Card
+            className="work-card"
+            onClick={() => navigate(`/works/${work.id}`)}
+            style={{ cursor: "pointer" }}
+          >
+            <div className="work-img-container">
               <Card.Img variant="top" src={work.img} />
-              <Card.Body>
-                <Card.Title>{work.title}</Card.Title>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+              <div className="hover-text">{work.title}</div>
+            </div>
+          </Card>
+        </Col>
+      ))}
+    </Row>
   )
 }
-
-export default Works
