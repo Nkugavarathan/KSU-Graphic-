@@ -1,4 +1,3 @@
-// Footer.js
 import { Container, Row, Col } from "react-bootstrap"
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa"
 
