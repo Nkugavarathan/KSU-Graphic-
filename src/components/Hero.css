@@ -10,7 +10,7 @@
   
   .hero-text {
     font-size: 4rem;
-    color: white;
+    color: rgb(199, 18, 18);
     animation: slideIn 2s ease forwards;
     opacity: 0;
   }

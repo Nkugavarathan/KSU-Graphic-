@@ -1,6 +1,5 @@
-
 import { NavLink } from "react-router-dom"
-import "./Navbar.css" // for hover underline effect
+// import "./Navbar.css" // for hover underline effect
 
 function Navbar() {
   return (
