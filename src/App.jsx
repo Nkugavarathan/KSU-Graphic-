@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import React from "react"
 import { Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
-import Hero from "./components/Hero"
+
 import Works from "./components/Works"
 import Footer from "./components/Footer"
 
@@ -10,24 +10,19 @@ import Footer from "./components/Footer"
 import About from "./pages/About"
 import Services from "./pages/Services"
 import Contact from "./pages/Contact"
+import WorkDetail from "./pages/Workdetail"
 
 function App() {
   return (
     <>
       <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero />
-              <Works />
-            </>
-          }
-        />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/works" element={<Works />} />
+        <Route path="/works/:id" element={<WorkDetail />} />
       </Routes>
       <Footer />
     </>
