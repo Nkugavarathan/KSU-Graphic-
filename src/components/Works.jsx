@@ -10,6 +10,7 @@ function Works() {
 
   return (
     <Container className="my-5">
+      <h2>Our Works</h2>
       <Row>
         {works.map((work, index) => (
           <Col key={index} sm={6} md={3} className="mb-4">
