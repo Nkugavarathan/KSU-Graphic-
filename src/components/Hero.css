@@ -1,0 +1,28 @@
+/* Hero.css */
+.hero-section {
+    background-image: url('/your-image.jpg'); /* replace with your image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero-text {
+    font-size: 4rem;
+    color: white;
+    animation: slideIn 2s ease forwards;
+    opacity: 0;
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  

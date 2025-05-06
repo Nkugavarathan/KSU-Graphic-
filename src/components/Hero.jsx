@@ -1,4 +1,3 @@
-// Hero.js
 import "./Hero.css"
 
 function Hero() {
