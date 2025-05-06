@@ -1,4 +1,3 @@
-// Works.js
 import { Card, Container, Row, Col } from "react-bootstrap"
 
 function Works() {
