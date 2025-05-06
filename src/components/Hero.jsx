@@ -1,5 +1,12 @@
-import React from "react"
+// Hero.js
+import "./Hero.css"
 
-export default function Header() {
-  return <div>Header</div>
+function Hero() {
+  return (
+    <div className="hero-section d-flex align-items-center justify-content-center">
+      <h1 className="hero-text">KSU Graphic</h1>
+    </div>
+  )
 }
+
+export default Hero
