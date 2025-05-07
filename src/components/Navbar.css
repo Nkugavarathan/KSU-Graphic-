@@ -17,4 +17,40 @@
   .nav-link:hover::after {
     width: 100%;
   }
-  
+  /* Navbar.css */
+
+.nav-link {
+  position: relative;
+  padding-bottom: 5px;
+  color: #000;
+  font-weight: 500;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background-color: #000;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #000;
+}
+.navbar {
+  transition: all 0.3s ease;
+}
+
+.navbar-scrolled {
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+}

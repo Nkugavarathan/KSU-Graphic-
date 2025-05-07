@@ -10,7 +10,7 @@ import Footer from "./components/Footer"
 import About from "./pages/About"
 import Services from "./pages/Services"
 import Contact from "./pages/Contact"
-import WorkDetail from "./pages/Workdetail"
+// import WorkDetail from "./pages/Workdetail"
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/services" element={<Services />} />
         <Route path="/works" element={<Works />} />
-        <Route path="/works/:id" element={<WorkDetail />} />
+        {/* <Route path="/works/:id" element={<WorkDetail />} /> */}
       </Routes>
       <Footer />
     </>
@@ -30,7 +30,3 @@ function App() {
 }
 
 export default App
-
-// export default function App() {
-//   return <h1 style={{ color: "red" }}>Hello World</h1>
-// }
