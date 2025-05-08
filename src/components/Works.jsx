@@ -46,12 +46,12 @@ const works = [
   {
     id: "sticker",
     title: "Stickers & Labels",
-    img: "https://img.freepik.com/free-psd/sticker-label-mockup_125540-354.jpg",
+    img: "https://img.freepik.com/free-psd/sticker-mockup_125540-354.jpg",
   },
   {
     id: "magazine",
     title: "Magazine Layout",
-    img: "https://img.freepik.com/free-psd/magazine-layout-mockup_125540-354.jpg",
+    img: "https://img.freepik.com/free-psd/magazine-mockup_125540-354.jpg",
   },
 ]
 
