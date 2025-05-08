@@ -13,7 +13,50 @@ const workDetails = {
     description: "Creative flyers to boost your business promotions.",
     image: "/images/flyer.jpg",
   },
-  // add more...
+  brochure: {
+    title: "Brochure Design",
+    description: "Professional brochures to represent your business perfectly.",
+    image: "/images/brochure.jpg",
+  },
+  businesscard: {
+    title: "Business Card Design",
+    description: "Custom business cards with stylish layouts and branding.",
+    image: "/images/businesscard.jpg",
+  },
+  poster: {
+    title: "Poster Printing",
+    description:
+      "Eye-catching posters printed in high resolution for any event.",
+    image: "/images/poster.jpg",
+  },
+  banner: {
+    title: "Banner Design & Printing",
+    description:
+      "Large format banners ideal for promotions, events, and branding.",
+    image: "/images/banner.jpg",
+  },
+  invitation: {
+    title: "Invitation Cards",
+    description:
+      "Elegant invitation card designs for weddings, birthdays, and events.",
+    image: "/images/invitation.jpg",
+  },
+  calendar: {
+    title: "Custom Calendar Printing",
+    description: "Personalized wall and desk calendars for branding or gifts.",
+    image: "/images/calendar.jpg",
+  },
+  sticker: {
+    title: "Sticker & Label Printing",
+    description:
+      "High-quality stickers and labels for packaging or branding needs.",
+    image: "/images/sticker.jpg",
+  },
+  magazine: {
+    title: "Magazine Layout Design",
+    description: "Modern magazine designs for content-rich publications.",
+    image: "/images/magazine.jpg",
+  },
 }
 
 export default function WorkDetail() {

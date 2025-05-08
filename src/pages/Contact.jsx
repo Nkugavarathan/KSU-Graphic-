@@ -1,15 +1,15 @@
 import React from "react"
-import { Container, Row, Col, Form, Button } from "react-bootstrap"
 import { FaMapMarkerAlt, FaEnvelope, FaGlobe, FaPhone } from "react-icons/fa"
-import { Card } from "react-bootstrap"
+
 function Contact() {
   return (
-    <Container className="my-5">
-      <Row>
-        <Col md={6}>
+    <div className="container my-5">
+      <div className="row">
+        {/* Left Side - Quick Connect */}
+        <div className="col-md-6 mb-4">
           <h4 className="mb-4">Quick Connect</h4>
 
-          <Card className="mb-3 p-3 shadow-sm">
+          <div className="card mb-3 p-3 shadow-sm">
             <div className="d-flex align-items-start">
               <FaMapMarkerAlt size={24} className="me-3 text-primary" />
               <div>
@@ -21,9 +21,9 @@ function Contact() {
                 </p>
               </div>
             </div>
-          </Card>
+          </div>
 
-          <Card className="mb-3 p-3 shadow-sm">
+          <div className="card mb-3 p-3 shadow-sm">
             <div className="d-flex align-items-start">
               <FaEnvelope size={24} className="me-3 text-primary" />
               <div>
@@ -35,9 +35,9 @@ function Contact() {
                 </p>
               </div>
             </div>
-          </Card>
+          </div>
 
-          <Card className="mb-3 p-3 shadow-sm">
+          <div className="card mb-3 p-3 shadow-sm">
             <div className="d-flex align-items-start">
               <FaGlobe size={24} className="me-3 text-primary" />
               <div>
@@ -45,9 +45,9 @@ function Contact() {
                 <p className="mb-0">www.prints.lk</p>
               </div>
             </div>
-          </Card>
+          </div>
 
-          <Card className="mb-3 p-3 shadow-sm">
+          <div className="card mb-3 p-3 shadow-sm">
             <div className="d-flex align-items-start">
               <FaPhone size={24} className="me-3 text-primary" />
               <div>
@@ -59,51 +59,64 @@ function Contact() {
                 </p>
               </div>
             </div>
-          </Card>
-        </Col>
-        <Col md={6}>
-          <h4>Get in Touch</h4>
-          <Form
+          </div>
+        </div>
+
+        {/* Right Side - Form */}
+        <div className="col-md-6">
+          <h4 className="mb-4">Get in Touch</h4>
+          <form
             action="mailto:yourmail@gmail.com"
             method="post"
             encType="text/plain"
           >
-            <Form.Group className="mb-3">
-              <Form.Label>Your Name *</Form.Label>
-              <Form.Control
+            <div className="mb-3">
+              <label className="form-label">Your Name *</label>
+              <input
                 type="text"
+                className="form-control"
                 placeholder="Enter your name"
                 required
               />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Your Email *</Form.Label>
-              <Form.Control
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Your Email *</label>
+              <input
                 type="email"
+                className="form-control"
                 placeholder="Enter your email"
                 required
               />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Subject *</Form.Label>
-              <Form.Control type="text" placeholder="Subject" required />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Your Message *</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={4}
-                placeholder="Your message"
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Subject *</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Subject"
                 required
               />
-            </Form.Group>
-            <Button type="submit" variant="primary">
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Your Message *</label>
+              <textarea
+                className="form-control"
+                rows="4"
+                placeholder="Your message"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" className="btn btn-primary">
               Send Message
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   )
 }
 

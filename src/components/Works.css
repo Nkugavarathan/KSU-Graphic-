@@ -1,20 +1,29 @@
 .work-img-container {
-    position: relative;
-  }
-  
-  .hover-text {
-    position: absolute;
-    bottom: 0;
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    opacity: 0;
-    transition: 0.3s;
-  }
-  
-  .work-card:hover .hover-text {
-    opacity: 1;
-  }
-  
+  position: relative;
+  overflow: hidden;
+}
+
+.work-card {
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.work-card:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.hover-text {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.work-card:hover .hover-text {
+  opacity: 1;
+}
