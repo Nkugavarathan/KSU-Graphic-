@@ -3,24 +3,56 @@ import { useNavigate } from "react-router-dom"
 import "./Works.css" // for hover effect
 
 const works = [
-  { id: "bookcover", title: "Book Cover", img: "/images/bookcover.jpg" },
-  { id: "flyer", title: "Flyer Design", img: "/images/flyer.jpg" },
-  { id: "brochure", title: "Brochure Design", img: "/images/brochure.jpg" },
+  {
+    id: "bookcover",
+    title: "Book Cover",
+    img: "https://img.freepik.com/free-psd/book-cover-mockup_125540-354.jpg",
+  },
+  {
+    id: "flyer",
+    title: "Flyer Design",
+    img: "https://img.freepik.com/free-psd/flyer-mockup_125540-354.jpg",
+  },
+  {
+    id: "brochure",
+    title: "Brochure Design",
+    img: "https://img.freepik.com/free-psd/brochure-mockup_125540-354.jpg",
+  },
   {
     id: "businesscard",
     title: "Business Card",
-    img: "/images/businesscard.jpg",
+    img: "https://img.freepik.com/free-psd/business-card-mockup_125540-354.jpg",
   },
-  { id: "poster", title: "Poster Printing", img: "/images/poster.jpg" },
-  { id: "banner", title: "Banner Design", img: "/images/banner.jpg" },
+  {
+    id: "poster",
+    title: "Poster Printing",
+    img: "https://img.freepik.com/free-psd/poster-mockup_125540-354.jpg",
+  },
+  {
+    id: "banner",
+    title: "Banner Design",
+    img: "https://img.freepik.com/free-psd/banner-mockup_125540-354.jpg",
+  },
   {
     id: "invitation",
     title: "Invitation Cards",
-    img: "/images/invitation.jpg",
+    img: "https://img.freepik.com/free-psd/invitation-card-mockup_125540-354.jpg",
   },
-  { id: "calendar", title: "Custom Calendar", img: "/images/calendar.jpg" },
-  { id: "sticker", title: "Stickers & Labels", img: "/images/sticker.jpg" },
-  { id: "magazine", title: "Magazine Layout", img: "/images/magazine.jpg" },
+  {
+    id: "calendar",
+    title: "Custom Calendar",
+    img: "https://img.freepik.com/free-psd/calendar-mockup_125540-354.jpg",
+  },
+  {
+    id: "sticker",
+    title: "Stickers & Labels",
+    img: "https://img.freepik.com/free-psd/sticker-label-mockup_125540-354.jpg",
+  },
+  {
+    id: "magazine",
+    title: "Magazine Layout",
+    img: "https://img.freepik.com/free-psd/magazine-layout-mockup_125540-354.jpg",
+  },
 ]
 
 export default function Works() {

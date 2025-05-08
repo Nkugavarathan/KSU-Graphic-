@@ -28,3 +28,12 @@
 .nav-about:hover::after { background-color: #28a745; }
 .nav-services:hover::after { background-color: #fd7e14; }
 .nav-contact:hover::after { background-color: #dc3545; }
+
+.navbar-scrolled{
+  transition: background-color .5s linear;
+  background-color: #14abe7;
+  
+}
+.navbar-scrolled ul {
+  color: white;
+}

@@ -22,7 +22,7 @@ function Navbar() {
   ]
   return (
     <nav
-      className={`navbar navbar-expand-lg fixed-top px-4 ${
+      className={`navbar navbar-expand-lg fixed-top px-4 mb-5 ${
         scrolled ? "navbar-scrolled" : "bg-light"
       }`}
     >

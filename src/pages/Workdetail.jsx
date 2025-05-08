@@ -6,7 +6,7 @@ const workDetails = {
     title: "Book Cover Design",
     description:
       "High-quality book cover design with modern and professional looks.",
-    image: "/images/bookcover.jpg",
+    img: "https://img.freepik.com/free-psd/flyer-mockup_125540-354.jpg",
   },
   flyer: {
     title: "Flyer Design",
