@@ -4,50 +4,71 @@ import "./Navbar.css"
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      const offset = window.scrollY
-      setScrolled(offset > 50)
+      setScrolled(window.scrollY > 50)
     }
-
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
   const navItems = [
     { label: "Home", path: "/", className: "nav-home" },
     { label: "About", path: "/about", className: "nav-about" },
     { label: "Services", path: "/services", className: "nav-services" },
     { label: "Contact", path: "/contact", className: "nav-contact" },
+    { label: "Login", path: "/google.com", className: "login" },
   ]
+
   return (
     <nav
-      className={`navbar navbar-expand-lg fixed-top px-4 mb-5 ${
+      className={`navbar navbar-expand-lg fixed-top px-4 ${
         scrolled ? "navbar-scrolled" : "bg-light"
       }`}
     >
       <a className="navbar-brand" href="/">
         KSU Graphics
       </a>
+
+      {/* Hamburger button only shows on small screens */}
       <button
-        className="navbar-toggler"
+        className="navbar-toggler custom-toggler d-lg-none"
         type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
+        onClick={() => setMenuOpen(!menuOpen)}
         aria-label="Toggle navigation"
       >
-        <span className="navbar-toggler-icon"></span>
+        {menuOpen ? (
+          <span className="close-icon">&times;</span>
+        ) : (
+          <span className="hamburger-icon">&#9776;</span>
+        )}
       </button>
+
+      {/* Collapse for mobile */}
       <div
-        className="collapse navbar-collapse justify-content-end"
+        className={`collapse navbar-collapse justify-content-end ${
+          menuOpen ? "show" : ""
+        }`}
         id="navbarNav"
       >
-        <ul className="navbar-nav">
-          {navItems.map(({ label, path, className }) => (
-            <li className="nav-item" key={label}>
-              <NavLink to={path} className={`nav-link ${className}`}>
+        <ul
+          className={`navbar-nav ${
+            menuOpen ? "mobile-menu" : "d-flex flex-row gap-3"
+          }`}
+        >
+          {navItems.map(({ label, path, className }, index) => (
+            <li
+              className={`nav-item animate-item`}
+              style={menuOpen ? { animationDelay: `${index * 0.1}s` } : {}}
+              key={label}
+            >
+              <NavLink
+                to={path}
+                className={`nav-link ${className}`}
+                onClick={() => setMenuOpen(false)}
+              >
                 {label}
               </NavLink>
             </li>

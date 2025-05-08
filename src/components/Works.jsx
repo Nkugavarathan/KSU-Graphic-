@@ -60,6 +60,7 @@ export default function Works() {
 
   return (
     <Row className="p-4">
+      <h2>Our Works</h2>
       {works.map((work) => (
         <Col md={4} className="mb-4" key={work.id}>
           <Card
