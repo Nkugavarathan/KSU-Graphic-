@@ -1,39 +1,20 @@
-
-.nav-link {
-    position: relative;
-  }
-  
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    width: 0%;
-    background-color: black;
-    transition: .1s ease;
-  }
-  
-  .nav-link:hover::after {
-    width: 50%;
-  }
-  /* Navbar.css */
-
 .nav-link {
   position: relative;
-  padding-bottom: 5px;
+  display: inline-block;
+  padding-bottom: 3px;
   color: #000;
   font-weight: 500;
+  text-decoration: none;
 }
 
 .nav-link::after {
   content: '';
   position: absolute;
-  left: 0;
   bottom: 0;
+  left: 0;
   height: 2px;
   width: 0%;
-  background-color: #000;
+  background-color: currentColor;
   transition: width 0.3s ease-in-out;
 }
 
@@ -42,15 +23,8 @@
   width: 100%;
 }
 
-.nav-link.active {
-  color: #000;
-}
-.navbar {
-  transition: all 0.3s ease;
-}
-
-.navbar-scrolled {
-  background-color: #ffffff !important;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  font-weight: 600;
-}
+/* Individual hover colors */
+.nav-home:hover::after { background-color: #007bff; }
+.nav-about:hover::after { background-color: #28a745; }
+.nav-services:hover::after { background-color: #fd7e14; }
+.nav-contact:hover::after { background-color: #dc3545; }

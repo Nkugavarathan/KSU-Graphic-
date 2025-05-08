@@ -14,7 +14,12 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
+  const navItems = [
+    { label: "Home", path: "/", className: "nav-home" },
+    { label: "About", path: "/about", className: "nav-about" },
+    { label: "Services", path: "/services", className: "nav-services" },
+    { label: "Contact", path: "/contact", className: "nav-contact" },
+  ]
   return (
     <nav
       className={`navbar navbar-expand-lg fixed-top px-4 ${
@@ -40,13 +45,10 @@ function Navbar() {
         id="navbarNav"
       >
         <ul className="navbar-nav">
-          {["Home", "About", "Services", "Contact"].map((item) => (
-            <li className="nav-item" key={item}>
-              <NavLink
-                to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                className="nav-link"
-              >
-                {item}
+          {navItems.map(({ label, path, className }) => (
+            <li className="nav-item" key={label}>
+              <NavLink to={path} className={`nav-link ${className}`}>
+                {label}
               </NavLink>
             </li>
           ))}

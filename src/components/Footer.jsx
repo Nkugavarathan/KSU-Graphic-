@@ -1,34 +1,58 @@
 import { Container, Row, Col } from "react-bootstrap"
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa"
-
+import "./Footer.css"
 function Footer() {
   return (
-    <footer className="bg-dark text-white py-2 mb-0">
+    <footer style={{ backgroundColor: "#e4e4e4" }} className="text-dark py-3">
       <Container>
-        <Row>
-          <Col md={6}>
+        <Row className="text-center text-md-start">
+          <Col md={4} sm={12} className="mb-3 mb-md-0">
             <h5>KSU Graphics</h5>
           </Col>
-          <Col md={6} className="d-flex justify-content-end align-items-center">
-            <div className="me-3">
-              <a href="/" className="text-white me-3">
-                Home
-              </a>
-              <a href="/" className="text-white me-3">
-                Terms
-              </a>
-              <a href="/" className="text-white me-3">
-                Privacy
-              </a>
-              <a href="/" className="text-white">
-                Contact
-              </a>
-            </div>
-            <div>
-              <FaFacebook className="me-2" />
-              <FaInstagram className="me-2" />
-              <FaYoutube />
-            </div>
+
+          <Col md={4} sm={12} className="mb-3 mb-md-0">
+            {/* <a
+              href="/"
+              className="text-dark me-3 text-decoration-none d-inline-block"
+            >
+              Home
+            </a>
+            <a
+              href="/"
+              className="text-dark me-3 text-decoration-none d-inline-block"
+            >
+              Terms
+            </a>
+            <a
+              href="/"
+              className="text-dark me-3 text-decoration-none d-inline-block"
+            >
+              Privacy
+            </a>
+            <a
+              href="/"
+              className="text-dark text-decoration-none d-inline-block"
+            >
+              Contact
+            </a> */}
+            <a href="/" className="footer-link footer-home">
+              Home
+            </a>
+            <a href="/" className="footer-link footer-terms">
+              Terms
+            </a>
+            <a href="/" className="footer-link footer-privacy">
+              Privacy
+            </a>
+            <a href="/" className="footer-link footer-contact">
+              Contact
+            </a>
+          </Col>
+
+          <Col md={4} sm={12}>
+            <FaFacebook className="me-2 footer-icon " />
+            <FaInstagram className="me-2 footer-icon" />
+            <FaYoutube className="footer-icon" />
           </Col>
         </Row>
       </Container>
