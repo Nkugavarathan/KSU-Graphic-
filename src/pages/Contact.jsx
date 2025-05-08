@@ -15,9 +15,9 @@ function Contact() {
               <div>
                 <h6 className="mb-1">Address</h6>
                 <p className="mb-0">
-                  No. 113/2, Hospital Road,
+                  No 1234 Colombo
                   <br />
-                  Kalubowila, Dehiwala.
+                  SriLanka
                 </p>
               </div>
             </div>
@@ -28,11 +28,7 @@ function Contact() {
               <FaEnvelope size={24} className="me-3 text-primary" />
               <div>
                 <h6 className="mb-1">Email</h6>
-                <p className="mb-0">
-                  info@prints.lk
-                  <br />
-                  digicolabs@gmail.com
-                </p>
+                <p className="mb-0">info@ksug</p>
               </div>
             </div>
           </div>
@@ -42,7 +38,7 @@ function Contact() {
               <FaGlobe size={24} className="me-3 text-primary" />
               <div>
                 <h6 className="mb-1">Website</h6>
-                <p className="mb-0">www.prints.lk</p>
+                <p className="mb-0">google</p>
               </div>
             </div>
           </div>
@@ -52,11 +48,7 @@ function Contact() {
               <FaPhone size={24} className="me-3 text-primary" />
               <div>
                 <h6 className="mb-1">Phone</h6>
-                <p className="mb-0">
-                  +94-77-0583458
-                  <br />
-                  +94-77-9128164
-                </p>
+                <p className="mb-0">088833434</p>
               </div>
             </div>
           </div>
