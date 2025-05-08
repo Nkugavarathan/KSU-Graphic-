@@ -14,11 +14,11 @@ function About() {
           </p>
         </div>
         <div className="col-md-6">
-          <img
+          {/* <img
             // src={aboutImg}
             alt="About us"
             className="img-fluid rounded shadow"
-          />
+          /> */}
         </div>
       </div>
     </div>
