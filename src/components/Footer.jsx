@@ -1,5 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap"
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa"
+import { Link } from "react-router-dom"
 import "./Footer.css"
 function Footer() {
   return (
@@ -24,9 +25,9 @@ function Footer() {
             <a href="/" className="footer-link footer-privacy">
               Privacy
             </a>
-            <a href="/" className="footer-link footer-contact">
+            <Link to="/contact" className="footer-link footer-contact">
               Contact
-            </a>
+            </Link>
           </Col>
 
           <Col md={4} sm={12}>

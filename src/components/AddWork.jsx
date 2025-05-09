@@ -1,6 +1,6 @@
 import { Modal, Form, Button } from "react-bootstrap"
-
-function AddWorkModal({ show, handleClose, onAdd }) {
+import { useState } from "react"
+export default function AddWork({ show, handleClose, onAdd }) {
   const [form, setForm] = useState({ title: "", description: "", img: "" })
 
   const handleChange = (e) => {
