@@ -1,0 +1,67 @@
+footer{
+  background-color: #c4c1c1 ;
+
+ 
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+  
+}
+.footer-icon {
+    color: #000; /* default icon color */
+    transition: color 0.3s ease;
+    font-size: 29px;
+  }
+  
+  .footer-icon:hover {
+    color: #007bff; /* change this to any hover color you like */
+    cursor: pointer;
+}
+  
+.footer-link {
+    position: relative;
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+    padding-bottom: 3px;
+    margin-right: 1rem;
+  }
+  
+  .footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: currentColor;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .footer-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Optional: different colors for each link */
+  .footer-home:hover::after {
+    background-color: #007bff;
+  }
+  .footer-terms:hover::after {
+    background-color: #28a745;
+  }
+  .footer-privacy:hover::after {
+    background-color: #fd7e14;
+  }
+  .footer-contact:hover::after {
+    background-color: #dc3545;
+  }
+  
+  /* Icon hover effect */
+  .footer-icon {
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .footer-icon:hover {
+    color: #007bff;
+  }
+  
