@@ -1,28 +1,50 @@
-/* Hero.css */
 .hero-section {
-    background-image: url('/your-image.jpg'); /* replace with your image */
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .hero-text {
-    font-size: 4rem;
-    color: rgb(199, 18, 18);
-    animation: slideIn 2s ease forwards;
+  background-image: url('/your-image.jpg'); /* Replace with actual path */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-main-text {
+  font-size: 4rem;
+  color: rgb(199, 18, 18);
+  animation: slideIn 2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(100px);
     opacity: 0;
   }
-  
-  @keyframes slideIn {
-    0% {
-      transform: translateY(100px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
+}
+
+.hero-text-slider {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  position: absolute;
+  top: 30%;
+}
+
+.slider-text {
+  display: inline-block;
+  font-size: 2rem;
+  color: #ffffff;
+  animation: scroll-left 10s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
