@@ -10,14 +10,14 @@ function Hero() {
   const [typing, setTyping] = useState(true)
 
   const words = [
-    { text: "Digital Printing", color: "#00FFFF" }, // Cyan
-    { text: "Offset Printing", color: "#FF6B6B" }, // Soft Red
+    { text: "Digital Printing", color: "#00FFFF" },
+    { text: "Offset Printing", color: "#FF6B6B" },
   ]
 
   useEffect(() => {
     const currentWord = words[wordIndex].text
-
     let timeout
+
     if (typing) {
       if (charIndex < currentWord.length) {
         timeout = setTimeout(() => {
@@ -57,9 +57,7 @@ function Hero() {
             zIndex: -1,
           },
           background: {
-            color: {
-              value: "#001c30", // Your dark background
-            },
+            color: { value: "#001c30" },
           },
           particles: {
             color: { value: "#ffffff" },
@@ -81,8 +79,22 @@ function Hero() {
           },
           interactivity: {
             events: {
-              onHover: { enable: true, mode: "repulse" },
+              onHover: { enable: true, mode: ["repulse", "parallax"] },
               onClick: { enable: true, mode: "push" },
+            },
+            modes: {
+              parallax: {
+                enable: true,
+                smooth: 10,
+                force: 60,
+              },
+              repulse: {
+                distance: 100,
+                duration: 0.4,
+              },
+              push: {
+                quantity: 4,
+              },
             },
           },
           detectRetina: true,
