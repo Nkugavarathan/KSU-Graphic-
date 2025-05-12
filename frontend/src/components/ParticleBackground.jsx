@@ -45,7 +45,7 @@ const ParticleBackground = () => {
           direction: "none",
           outModes: { default: "bounce" },
         },
-        number: { value: 50, density: { enable: true } },
+        number: { value: 200, density: { enable: true } },
         shape: { type: "circle" },
         size: { value: { min: 1, max: 3 } },
         opacity: { value: 0.5 },
