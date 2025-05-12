@@ -1,78 +1,74 @@
-// src/components/ParticleBackground.jsx
-import React, { useCallback } from "react"
-import Particles from "react-tsparticles"
-import { loadFull } from "tsparticles"
+// import Particles from "react-tsparticles"
+// import ParticleConfig from "./ParticleConfig"
+// const ParticleBackground = () => {
+//   return <Particles params={ParticleConfig} />
+// }
+
+// export default ParticleBackground
+
+import { useEffect, useMemo, useState } from "react"
+import Particles, { initParticlesEngine } from "@tsparticles/react"
+import { loadSlim } from "@tsparticles/slim"
 
 const ParticleBackground = () => {
-  const particlesInit = useCallback(async (engine) => {
-    await loadFull(engine)
+  const [init, setInit] = useState(false)
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine) // Loads slim version (lightweight)
+    }).then(() => setInit(true))
   }, [])
 
-  return (
+  const particlesLoaded = (container) => {
+    console.log("Particles Loaded", container)
+  }
+
+  const options = useMemo(
+    () => ({
+      background: { color: { value: "#0d47a1" } },
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onClick: { enable: true, mode: "push" },
+          onHover: { enable: true, mode: "repulse" },
+        },
+        modes: {
+          push: { quantity: 4 },
+          repulse: { distance: 100, duration: 0.4 },
+        },
+      },
+      particles: {
+        color: { value: "#ffffff" },
+        links: {
+          enable: true,
+          color: "#ffffff",
+          distance: 150,
+          opacity: 0.5,
+          width: 1,
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          outModes: { default: "bounce" },
+        },
+        number: { value: 50, density: { enable: true } },
+        shape: { type: "circle" },
+        size: { value: { min: 1, max: 3 } },
+        opacity: { value: 0.5 },
+      },
+      detectRetina: true,
+    }),
+    []
+  )
+
+  return init ? (
     <Particles
       id="tsparticles"
-      init={particlesInit}
-      options={{
-        background: {
-          color: {
-            value: "#001c30",
-          },
-        },
-        fullScreen: {
-          enable: true,
-          zIndex: -1, // 👈 This makes sure it stays in the background
-        },
-        particles: {
-          color: {
-            value: "#ffffff",
-          },
-          links: {
-            enable: true,
-            color: "#ffffff",
-            distance: 150,
-            opacity: 0.4,
-            width: 1,
-          },
-          move: {
-            enable: true,
-            speed: 1,
-          },
-          number: {
-            value: 50,
-            density: {
-              enable: true,
-              area: 800,
-            },
-          },
-          opacity: {
-            value: 1,
-          },
-          shape: {
-            type: "circle",
-          },
-          size: {
-            value: {
-              min: 1,
-              max: 3,
-            },
-          },
-        },
-        interactivity: {
-          events: {
-            onHover: {
-              enable: true,
-              mode: "repulse",
-            },
-            onClick: {
-              enable: true,
-              mode: "push",
-            },
-          },
-        },
-        detectRetina: true,
-      }}
+      options={options}
+      particlesLoaded={particlesLoaded}
     />
-  )
+  ) : null
 }
 
 export default ParticleBackground
