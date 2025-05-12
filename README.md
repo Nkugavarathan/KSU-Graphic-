@@ -1,2 +1,0 @@
-#KSU Graphic
-#Home
