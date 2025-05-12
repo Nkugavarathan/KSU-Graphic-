@@ -1,11 +1,3 @@
-// import Particles from "react-tsparticles"
-// import ParticleConfig from "./ParticleConfig"
-// const ParticleBackground = () => {
-//   return <Particles params={ParticleConfig} />
-// }
-
-// export default ParticleBackground
-
 import { useEffect, useMemo, useState } from "react"
 import Particles, { initParticlesEngine } from "@tsparticles/react"
 import { loadSlim } from "@tsparticles/slim"
@@ -15,7 +7,7 @@ const ParticleBackground = () => {
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
-      await loadSlim(engine) // Loads slim version (lightweight)
+      await loadSlim(engine)
     }).then(() => setInit(true))
   }, [])
 
@@ -25,6 +17,7 @@ const ParticleBackground = () => {
 
   const options = useMemo(
     () => ({
+      fullScreen: { enable: false }, // ✅ Make sure full screen is disabled
       background: { color: { value: "#0d47a1" } },
       fpsLimit: 60,
       interactivity: {
@@ -63,11 +56,13 @@ const ParticleBackground = () => {
   )
 
   return init ? (
-    <Particles
-      id="tsparticles"
-      options={options}
-      particlesLoaded={particlesLoaded}
-    />
+    <div className="particles-container">
+      <Particles
+        id="tsparticles"
+        options={options}
+        particlesLoaded={particlesLoaded}
+      />
+    </div>
   ) : null
 }
 

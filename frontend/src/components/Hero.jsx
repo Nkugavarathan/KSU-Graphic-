@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 
 import "./Hero.css"
-import ParticleBackground from "./ParticleBackground"
 
 function Hero() {
   const [wordIndex, setWordIndex] = useState(0)
@@ -44,7 +43,6 @@ function Hero() {
 
   return (
     <>
-      <ParticleBackground />
       <div className="hero-typewriter">
         <h1 style={{ color: words[wordIndex].color }}>
           {displayedText}
