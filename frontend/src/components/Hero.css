@@ -1,50 +1,28 @@
-.hero-section {
-  background-image: url('/your-image.jpg'); /* Replace with actual path */
-  background-size: cover;
-  background-position: center;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+.hero-typewriter {
   height: 100vh;
-  position: relative;
-  overflow: hidden;
+  background: linear-gradient(to right, #000000, #111111);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.hero-main-text {
-  font-size: 4rem;
-  color: rgb(199, 18, 18);
-  animation: slideIn 2s ease forwards;
-  opacity: 0;
+.hero-typewriter h1 {
+  font-size: 3.5rem;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+
 }
 
-@keyframes slideIn {
-  0% {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.hero-text-slider {
-  white-space: nowrap;
-  overflow: hidden;
-  width: 100%;
-  position: absolute;
-  top: 30%;
-}
-
-.slider-text {
+.cursor {
   display: inline-block;
-  font-size: 2rem;
+  width: 1ch;
+  animation: blink 0.7s infinite;
   color: #ffffff;
-  animation: scroll-left 10s linear infinite;
 }
 
-@keyframes scroll-left {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
