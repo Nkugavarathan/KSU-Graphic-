@@ -114,6 +114,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { Row, Col, Card, Button } from "react-bootstrap"
 import AddWork from "./AddWork"
+import { Link } from "react-router-dom" // Import Link
 import "./Works.css"
 
 export default function Works() {
@@ -201,7 +202,10 @@ export default function Works() {
                   src={`http://localhost/my-admin-backend/uploads/${work.image}`}
                 />
                 <div className="hover-overlay">
-                  <h5 className="hover-title">{work.title}</h5>
+                  {/* Make title clickable */}
+                  <Link to={`/workdetails/${work.id}`} className="hover-title">
+                    <h5>{work.title}</h5>
+                  </Link>
                   <p className="hover-description">{work.description}</p>
 
                   {isAdmin && (
