@@ -113,22 +113,85 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { Row, Col, Card, Button } from "react-bootstrap"
-
-import "./Works.css" // Make sure this CSS file contains your hover styles
+import AddWork from "./AddWork"
+import "./Works.css"
 
 export default function Works() {
   const [worksList, setWorksList] = useState([])
+  const [showAddModal, setShowAddModal] = useState(false)
+  const [editWork, setEditWork] = useState(null)
 
-  // Fetch works from backend
+  const isAdmin = localStorage.getItem("isAdmin") === "true"
+
   useEffect(() => {
-    axios.get("http://localhost/my-admin-backend/getworks.php").then((res) => {
-      setWorksList(res.data.reverse()) // Reverse to show latest first
-    })
+    fetchWorks()
   }, [])
+
+  const fetchWorks = () => {
+    axios.get("http://localhost/my-admin-backend/getworks.php").then((res) => {
+      setWorksList(res.data.reverse())
+    })
+  }
+
+  const handleAddWork = (newWork) => {
+    setWorksList([newWork, ...worksList])
+  }
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this work?")) return
+
+    try {
+      const formData = new URLSearchParams()
+      formData.append("id", id)
+
+      const res = await axios.post(
+        "http://localhost/my-admin-backend/deletework.php",
+        formData
+      )
+
+      if (res.data.status === "success") {
+        setWorksList(worksList.filter((work) => work.id !== id))
+      } else {
+        alert("Failed to delete work from server.")
+      }
+    } catch (err) {
+      alert("Failed to delete work.")
+      console.error(err)
+    }
+  }
+
+  const handleEdit = (work) => {
+    setEditWork(work)
+    setShowAddModal(true)
+  }
 
   return (
     <>
+      <AddWork
+        show={showAddModal}
+        handleClose={() => {
+          setShowAddModal(false)
+          setEditWork(null)
+        }}
+        onAdd={handleAddWork}
+        editingWork={editWork}
+        onUpdate={(updatedWork) => {
+          const updatedList = worksList.map((w) =>
+            w.id === updatedWork.id ? updatedWork : w
+          )
+          setWorksList(updatedList)
+          setEditWork(null)
+        }}
+      />
+
       <Row className="p-4">
+        <div className="d-flex justify-content-between align-items-center w-100 mb-3">
+          <h2>Our Works</h2>
+          {isAdmin && (
+            <Button onClick={() => setShowAddModal(true)}>Add New</Button>
+          )}
+        </div>
+
         {worksList.map((work) => (
           <Col md={4} className="mb-4" key={work.id}>
             <Card className="work-card h-100">
@@ -140,6 +203,26 @@ export default function Works() {
                 <div className="hover-overlay">
                   <h5 className="hover-title">{work.title}</h5>
                   <p className="hover-description">{work.description}</p>
+
+                  {isAdmin && (
+                    <div className="mt-2">
+                      <Button
+                        size="sm"
+                        variant="warning"
+                        className="me-2"
+                        onClick={() => handleEdit(work)}
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="danger"
+                        onClick={() => handleDelete(work.id)}
+                      >
+                        Delete
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </div>
             </Card>

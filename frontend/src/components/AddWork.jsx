@@ -1,19 +1,41 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
 import { Modal, Button, Form } from "react-bootstrap"
 
-export default function AddWork({ show, handleClose, onAdd }) {
+export default function AddWork({
+  show,
+  handleClose,
+  onAdd,
+  editingWork,
+  onUpdate,
+}) {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [image, setImage] = useState(null)
   const [imageURL, setImageURL] = useState("")
   const [isUploading, setIsUploading] = useState(false)
 
+  useEffect(() => {
+    if (editingWork) {
+      setTitle(editingWork.title)
+      setDescription(editingWork.description)
+      setImage(null)
+      setImageURL(
+        `http://localhost/my-admin-backend/uploads/${editingWork.image}`
+      )
+    } else {
+      setTitle("")
+      setDescription("")
+      setImage(null)
+      setImageURL("")
+    }
+  }, [editingWork])
+
   const handleFileChange = (e) => {
     const file = e.target.files[0]
     if (file) {
       setImage(file)
-      setImageURL(URL.createObjectURL(file)) // Preview the file
+      setImageURL(URL.createObjectURL(file))
     }
   }
 
@@ -28,36 +50,43 @@ export default function AddWork({ show, handleClose, onAdd }) {
     const formData = new FormData()
     formData.append("title", title)
     formData.append("description", description)
-    formData.append("image", image)
+    if (image) formData.append("image", image)
 
     try {
       setIsUploading(true)
-      const response = await axios.post(
-        "http://localhost/my-admin-backend/addwork.php",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      )
+
+      let url = "http://localhost/my-admin-backend/addwork.php"
+      if (editingWork) {
+        url = "http://localhost/my-admin-backend/editwork.php"
+        formData.append("id", editingWork.id)
+        formData.append("oldImage", editingWork.image) // optional: to remove old image
+      }
+
+      const response = await axios.post(url, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
 
       if (response.data.status === "success") {
-        onAdd({
+        const updatedWork = {
+          id: editingWork ? editingWork.id : response.data.id,
           title,
           description,
-          img: response.data.imageURL,
-        })
+          image: response.data.image || editingWork?.image,
+        }
+
+        editingWork ? onUpdate(updatedWork) : onAdd(updatedWork)
+
+        // Reset form
         setTitle("")
         setDescription("")
         setImage(null)
         setImageURL("")
         handleClose()
       } else {
-        alert("Something went wrong. Try again.")
+        alert(response.data.message || "Something went wrong.")
       }
     } catch (error) {
-      console.error("Error uploading work:", error)
+      console.error("Error submitting work:", error)
       alert("Failed to upload. Try again.")
     } finally {
       setIsUploading(false)
@@ -67,7 +96,7 @@ export default function AddWork({ show, handleClose, onAdd }) {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Add New Work</Modal.Title>
+        <Modal.Title>{editingWork ? "Edit Work" : "Add New Work"}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
@@ -108,7 +137,13 @@ export default function AddWork({ show, handleClose, onAdd }) {
           </Form.Group>
 
           <Button variant="primary" type="submit" disabled={isUploading}>
-            {isUploading ? "Uploading..." : "Add Work"}
+            {isUploading
+              ? editingWork
+                ? "Updating..."
+                : "Uploading..."
+              : editingWork
+              ? "Update Work"
+              : "Add Work"}
           </Button>
         </Form>
       </Modal.Body>
