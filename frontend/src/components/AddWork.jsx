@@ -1,15 +1,67 @@
-import { Modal, Form, Button } from "react-bootstrap"
 import { useState } from "react"
-export default function AddWork({ show, handleClose, onAdd }) {
-  const [form, setForm] = useState({ title: "", description: "", img: "" })
+import axios from "axios"
+import { Modal, Button, Form } from "react-bootstrap"
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
+export default function AddWork({ show, handleClose, onAdd }) {
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [image, setImage] = useState(null)
+  const [imageURL, setImageURL] = useState("")
+  const [isUploading, setIsUploading] = useState(false)
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      setImage(file)
+      setImageURL(URL.createObjectURL(file)) // Preview the file
+    }
   }
 
-  const handleSubmit = () => {
-    onAdd({ ...form, id: Date.now().toString() }) // Generate a unique id
-    handleClose()
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    if (!title || !description) {
+      alert("Please provide a title and description.")
+      return
+    }
+
+    const formData = new FormData()
+    formData.append("title", title)
+    formData.append("description", description)
+    formData.append("image", image)
+
+    try {
+      setIsUploading(true)
+      const response = await axios.post(
+        "http://localhost/my-admin-backend/addwork.php",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+
+      if (response.data.status === "success") {
+        onAdd({
+          title,
+          description,
+          img: response.data.imageURL,
+        })
+        setTitle("")
+        setDescription("")
+        setImage(null)
+        setImageURL("")
+        handleClose()
+      } else {
+        alert("Something went wrong. Try again.")
+      }
+    } catch (error) {
+      console.error("Error uploading work:", error)
+      alert("Failed to upload. Try again.")
+    } finally {
+      setIsUploading(false)
+    }
   }
 
   return (
@@ -18,29 +70,48 @@ export default function AddWork({ show, handleClose, onAdd }) {
         <Modal.Title>Add New Work</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
-          <Form.Group controlId="title">
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3">
             <Form.Label>Title</Form.Label>
-            <Form.Control name="title" onChange={handleChange} />
+            <Form.Control
+              type="text"
+              placeholder="Enter work title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </Form.Group>
-          <Form.Group controlId="description" className="mt-2">
+
+          <Form.Group className="mb-3">
             <Form.Label>Description</Form.Label>
-            <Form.Control name="description" onChange={handleChange} />
+            <Form.Control
+              type="text"
+              placeholder="Enter work description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </Form.Group>
-          <Form.Group controlId="img" className="mt-2">
-            <Form.Label>Image URL</Form.Label>
-            <Form.Control name="img" onChange={handleChange} />
+
+          <Form.Group className="mb-3">
+            <Form.Label>Image</Form.Label>
+            <Form.Control
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+            />
+            {imageURL && (
+              <img
+                src={imageURL}
+                alt="Preview"
+                style={{ width: "100px", marginTop: "10px" }}
+              />
+            )}
           </Form.Group>
+
+          <Button variant="primary" type="submit" disabled={isUploading}>
+            {isUploading ? "Uploading..." : "Add Work"}
+          </Button>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Cancel
-        </Button>
-        <Button variant="success" onClick={handleSubmit}>
-          Add
-        </Button>
-      </Modal.Footer>
     </Modal>
   )
 }
