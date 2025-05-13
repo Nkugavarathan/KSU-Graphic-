@@ -2,12 +2,19 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { Form, Button, Alert, Container, Row, Col, Card } from "react-bootstrap"
 
+import AddWork from "./AddWork"
+
 const Login = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [message, setMessage] = useState("")
   const [variant, setVariant] = useState("danger")
   const [isAdmin, setIsAdmin] = useState(false)
+
+  const [showModal, setShowModal] = useState(false)
+
+  const handleOpenModal = () => setShowModal(true)
+  const handleCloseModal = () => setShowModal(false)
 
   // Check if the admin is already logged in from localStorage
   useEffect(() => {
@@ -102,14 +109,15 @@ const Login = () => {
       {isAdmin && (
         <Row className="mt-4 mx-5">
           <Col className="text-center">
-            <Button
-              variant="success"
-              size="lg"
-              onClick={() => console.log("Add Work clicked")}
-              to="/addwork"
-            >
+            <Button variant="success" size="lg" onClick={handleOpenModal}>
               Add Work
             </Button>
+            <AddWork
+              show={showModal}
+              handleClose={handleCloseModal}
+              onAdd={(newWork) => console.log("Added:", newWork)}
+            />
+
             <Button
               variant="secondary"
               size="lg"

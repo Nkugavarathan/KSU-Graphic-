@@ -81,6 +81,55 @@
   margin: 0;
 } */
 
+/* .work-img-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.work-card {
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.work-card:hover {
+  transform: scale(1.05);
+}
+
+.hover-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(255, 102, 0, 0.9), rgba(255, 102, 0, 0.3));
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  opacity: 0;
+  padding-bottom: 20px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(100%);
+}
+
+.work-card:hover .hover-overlay {
+  opacity: 1;
+  transform: translateY(0);
+  justify-content: center;
+}
+
+.hover-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.hover-description {
+  font-size: 0.95rem;
+  margin: 0;
+} */
+
+
 .work-img-container {
   position: relative;
   overflow: hidden;
@@ -127,4 +176,9 @@
 .hover-description {
   font-size: 0.95rem;
   margin: 0;
+}
+.work-img-container img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
 }
