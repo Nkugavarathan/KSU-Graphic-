@@ -19,7 +19,7 @@ function Navbar() {
     { label: "About", path: "/about", className: "nav-about" },
     { label: "Services", path: "/services", className: "nav-services" },
     { label: "Contact", path: "/contact", className: "nav-contact" },
-    { label: "Login", path: "/google.com", className: "login" },
+    { label: "Login", path: "/login", className: "login" },
   ]
 
   return (
