@@ -202,7 +202,6 @@ export default function Works() {
                   src={`http://localhost/my-admin-backend/uploads/${work.image}`}
                 />
                 <div className="hover-overlay">
-                  {/* Make title clickable */}
                   <Link to={`/workdetails/${work.id}`} className="hover-title">
                     <h5>{work.title}</h5>
                   </Link>
