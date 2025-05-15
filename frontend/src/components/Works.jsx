@@ -115,7 +115,7 @@ import axios from "axios"
 import { Row, Col, Card, Button } from "react-bootstrap"
 import AddWork from "./AddWork"
 import { Link } from "react-router-dom" // Import Link
-import "./Works.css"
+// import "./Works.css"
 
 export default function Works() {
   const [worksList, setWorksList] = useState([])
@@ -124,16 +124,29 @@ export default function Works() {
 
   const isAdmin = localStorage.getItem("isAdmin") === "true"
 
+  // useEffect(() => {
+  //   fetchWorks()
+  // }, [])
+
+  // const fetchWorks = () => {
+  //   axios
+  //     .get("https://ksugraphicmyadmin.infinityfreeapp.com/getworks.php")
+  //     .then((res) => {
+  //       console.log(res)
+  //       setWorksList(res.data.reverse())
+  //     })
+  // }
+
   useEffect(() => {
-    fetchWorks()
+    axios
+    axios
+      .get("https://ksugraphicmyadmin.infinityfreeapp.com/getworks.php?i=1")
+      .then((res) => {
+        console.log(res.data)
+        setWorksList(res.data.reverse())
+      })
+      .catch((err) => console.error("Error fetching works:", err))
   }, [])
-
-  const fetchWorks = () => {
-    axios.get("http://localhost/my-admin-backend/getworks.php").then((res) => {
-      setWorksList(res.data.reverse())
-    })
-  }
-
   const handleAddWork = (newWork) => {
     setWorksList([newWork, ...worksList])
   }
@@ -146,7 +159,7 @@ export default function Works() {
       formData.append("id", id)
 
       const res = await axios.post(
-        "http://localhost/my-admin-backend/deletework.php",
+        "https://ksugraphicmyadmin.infinityfreeapp.com/deletework.php",
         formData
       )
 
@@ -199,7 +212,7 @@ export default function Works() {
               <div className="work-img-container">
                 <Card.Img
                   variant="top"
-                  src={`http://localhost/my-admin-backend/uploads/${work.image}`}
+                  src={`https://ksugraphicmyadmin.infinityfreeapp.com/uploads/${work.image}`}
                 />
                 <div className="hover-overlay">
                   <Link to={`/workdetails/${work.id}`} className="hover-title">

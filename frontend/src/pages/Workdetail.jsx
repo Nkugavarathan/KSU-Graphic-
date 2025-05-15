@@ -67,7 +67,7 @@ export default function WorkDetail() {
     const fetchWork = async () => {
       try {
         const res = await axios.get(
-          `http://localhost/my-admin-backend/getworkdetails.php?id=${id}` // New endpoint
+          `https://ksugraphicmyadmin.infinityfreeapp.com/getworkdetails.php?id=${id}` // New endpoint
         )
         setWork(res.data)
         setLoading(false)
@@ -101,7 +101,7 @@ export default function WorkDetail() {
 
     try {
       const res = await axios.post(
-        "http://localhost/my-admin-backend/uploadworkimage.php", // Your backend endpoint to upload images
+        "https://ksugraphicmyadmin.infinityfreeapp.com/uploadworkimage.php", // Your backend endpoint to upload images
         formData
       )
       console.log("Upload response:", res.data) // Log the response
@@ -141,7 +141,7 @@ export default function WorkDetail() {
         </Col>
         <Col md={6}>
           <img
-            src={`http://localhost/my-admin-backend/uploads/${work.image}`} // Assuming the image is in the 'uploads' folder
+            src={`https://ksugraphicmyadmin.infinityfreeapp.com/uploads/${work.image}`} // Assuming the image is in the 'uploads' folder
             alt={work.title}
             style={{ width: 500, height: 500 }}
           />
@@ -155,7 +155,7 @@ export default function WorkDetail() {
           work.images.map((image, index) => (
             <Col key={index} md={4}>
               <img
-                src={`http://localhost/my-admin-backend/uploads/${image}`}
+                src={`https://ksugraphicmyadmin.infinityfreeapp.com/uploads/${image}`}
                 alt={`Work Image ${index + 1}`}
                 style={{ width: 300, height: 300 }}
                 className="img-fluid"
